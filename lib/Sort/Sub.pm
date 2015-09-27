@@ -97,7 +97,7 @@ After the name, you can add some options, enclosed with angle brackets C<< <>
 
 =head1 GUIDELINES FOR WRITING A SORT::SUB::* MODULE
 
-The name should be in lowercase. It should be a verb (e.g. C<naturally>) or a
+The name should be in lowercase. It should be an adverb (e.g. C<naturally>) or a
 phrase with words separated by underscore (C<_>) and the phrase begins with
 C<by> (e.g. C<by_num_and_non_num_parts>).
 
