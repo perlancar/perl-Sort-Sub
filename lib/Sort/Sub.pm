@@ -36,7 +36,7 @@ sub import {
 
  use Sort::Sub qw($naturally);
 
- my @sorted = sort $naturally_parts ('track1.mp3', 'track10.mp3', 'track2.mp3', 'track1b.mp3', 'track1a.mp3');
+ my @sorted = sort $naturally ('track1.mp3', 'track10.mp3', 'track2.mp3', 'track1b.mp3', 'track1a.mp3');
  # => ('track1.mp3', 'track1a.mp3', 'track1b.mp3', 'track2.mp3', 'track10.mp3')
 
 Request as subroutine:
