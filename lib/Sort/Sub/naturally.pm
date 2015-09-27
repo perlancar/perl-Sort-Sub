@@ -39,6 +39,8 @@ sub gen_sorter {
 1;
 # ABSTRACT: Sort naturally
 
+=for Pod::Coverage ^(gen_sorter)$
+
 =head1 SEE ALSO
 
 L<Sort::Naturally>
