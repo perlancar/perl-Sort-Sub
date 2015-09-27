@@ -12,10 +12,9 @@ sub gen_sorter {
 
     my $re = qr/([+-]?\d+|\D+)/;
 
-    package main;
     sub {
-        my @a_parts = +($is_ci ? lc($a) : $a) =~ /$re/g;
-        my @b_parts = +($is_ci ? lc($b) : $b) =~ /$re/g;
+        my @a_parts = +($is_ci ? lc($main::a) : $main::a) =~ /$re/g;
+        my @b_parts = +($is_ci ? lc($main::b) : $main::b) =~ /$re/g;
 
         #use DD; dd \@a_parts;
 
