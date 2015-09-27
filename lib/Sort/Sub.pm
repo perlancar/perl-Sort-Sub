@@ -103,7 +103,7 @@ C<by> (e.g. C<by_num_and_non_num_parts>).
 
 The module must contain a C<gen_sorter> subroutine. It will be called with:
 
- C<($is_reverse, $is_ci)>
+ ($is_reverse, $is_ci)
 
 Where C<$is_reserve> will be set to true if user requests a reverse sort, and
 C<$is_ci> will be set to true if user requests a case-insensitive sort. The
