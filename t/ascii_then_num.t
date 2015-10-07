@@ -3,17 +3,18 @@
 use 5.010;
 use strict;
 use warnings;
+use FindBin '$Bin';
+use lib "$Bin/lib";
 
+use Local::TestLib;
 use Test::More 0.98;
-require Sort::Sub;
 
-our $ascii_then_num;
-
-Sort::Sub->import('$ascii_then_num');
-is_deeply([sort $ascii_then_num qw(1 2 -3 a B C d)], [qw/B C a d -3 1 2/]);
-Sort::Sub->import('$ascii_then_num<i>');
-is_deeply([sort $ascii_then_num qw(1 2 -3 a B C d)], [qw/a B C d -3 1 2/]);
-Sort::Sub->import('$ascii_then_num<ir>');
-is_deeply([sort $ascii_then_num qw(1 2 -3 a B C d)], [qw/2 1 -3 d C B a/]);
+sort_sub_ok(
+    subname   => 'ascii_then_num',
+    input     => [qw(1 2 -3 a B C d)],
+    output    => [qw/B C a d -3 1 2/],
+    output_i  => [qw/a B C d -3 1 2/],
+    output_ir => [qw/2 1 -3 d C B a/],
+);
 
 done_testing;

@@ -24,6 +24,7 @@ sub import {
         if ($is_var) {
             ${"$caller\::$name"} = \&$sorter;
         } else {
+            no warnings 'redefine';
             *{"$caller\::$name"} = \&$sorter;
         }
     }

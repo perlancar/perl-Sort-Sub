@@ -17,19 +17,25 @@ sub gen_sorter {
                        \z/x;
 
     sub {
+        no strict 'refs';
+
+        my $caller = caller();
+        my $a = ${"$caller\::a"};
+        my $b = ${"$caller\::b"};
+
         my $cmp = 0;
-        if ($main::a =~ $re_is_num) {
-            if ($main::b =~ $re_is_num) {
-                $cmp = $main::a <=> $main::b;
+        if ($a =~ $re_is_num) {
+            if ($b =~ $re_is_num) {
+                $cmp = $a <=> $b;
             } else {
                 $cmp = 1;
             }
         } else {
-            if ($main::b =~ $re_is_num) {
+            if ($b =~ $re_is_num) {
                 $cmp = -1;
             } else {
                 $cmp = $is_ci ?
-                    lc($main::a) cmp lc($main::b) : $main::a cmp $main::b;
+                    lc($a) cmp lc($b) : $a cmp $b;
             }
         }
         $is_reverse ? -1*$cmp : $cmp;
