@@ -1,5 +1,15 @@
 Revision history for Sort-Sub
 
+0.03    2015-10-07 (PERLANCAR)
+
+	- Add sorters: ascii_then_num, num_then_ascii.
+
+	- [Bugfix] make the sortsubs work when used from package other than
+	  'main'.
+
+        - [Refactor] Refactor tests (extract into test routine/library).
+
+
 0.02    2015-09-27 (PERLANCAR)
 
         - No functional changes.
