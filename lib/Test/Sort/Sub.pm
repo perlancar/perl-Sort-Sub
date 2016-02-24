@@ -15,18 +15,19 @@ sub sort_sub_ok {
 
     my $subname = $args{subname};
     subtest "sort_sub_ok $subname" => sub {
+        my $res;
+
         Sort::Sub->import("$subname");
-        is_deeply([sort {&{$subname}}
-                       @{ $args{input} }], $args{output},
-                  'result');
+        $res = [sort {&{$subname}} @{ $args{input} }];
+        is_deeply($res, $args{output}, 'result') or diag explain $res;
+
         Sort::Sub->import("$subname<i>");
-        is_deeply([sort {&{$subname}}
-                       @{ $args{input} }], $args{output_i},
-                  'result i');
+        $res = [sort {&{$subname}} @{ $args{input} }];
+        is_deeply($res, $args{output_i}, 'result i') or diag explain $res;
+
         Sort::Sub->import("$subname<ir>");
-        is_deeply([sort {&{$subname}}
-                       @{ $args{input} }], $args{output_ir},
-                  'result ir');
+        $res = [sort {&{$subname}} @{ $args{input} }];
+        is_deeply($res, $args{output_ir}, 'result ir') or diag explain $res;
     };
 }
 
