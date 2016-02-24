@@ -3,11 +3,9 @@
 use 5.010;
 use strict;
 use warnings;
-use FindBin '$Bin';
-use lib "$Bin/lib";
 
-use Local::TestLib;
 use Test::More 0.98;
+use Test::Sort::Sub;
 
 sort_sub_ok(
     subname   => 'naturally',

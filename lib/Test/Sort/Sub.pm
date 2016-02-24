@@ -1,4 +1,4 @@
-package Local::TestLib;
+package Test::Sort::Sub;
 
 use 5.010;
 use strict 'subs', 'vars';
@@ -31,3 +31,4 @@ sub sort_sub_ok {
 }
 
 1;
+# ABSTRACT: Test Sort::Sub::* subroutine
