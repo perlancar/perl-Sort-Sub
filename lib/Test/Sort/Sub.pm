@@ -32,3 +32,7 @@ sub sort_sub_ok {
 
 1;
 # ABSTRACT: Test Sort::Sub::* subroutine
+
+=head1 FUNCTIONS
+
+=head2 sort_sub_ok(%args) => bool
