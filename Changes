@@ -1,5 +1,15 @@
 Revision history for Sort-Sub
 
+0.04    2016-02-25 (PERLANCAR)
+
+	- No functional changes.
+
+	- Move t/lib/Local/TestLib to lib/Test/Sort/Sub.pm so it can be
+	  used from other dists.
+
+	- Add module: Sub::Sort to catch common typo.
+
+
 0.03    2015-10-07 (PERLANCAR)
 
 	- Add sorters: ascii_then_num, num_then_ascii.
