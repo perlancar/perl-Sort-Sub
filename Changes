@@ -1,5 +1,13 @@
 Revision history for Sort-Sub
 
+0.05    2016-02-27 (PERLANCAR)
+
+	- All sort sub should use (a,b) argument in addition to checking
+	  for caller's $a and $b.
+
+	- Better diagnostics for Test::Sort::Sub.
+
+
 0.04    2016-02-25 (PERLANCAR)
 
 	- No functional changes.
