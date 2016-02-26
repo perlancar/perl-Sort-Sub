@@ -16,8 +16,8 @@ sub gen_sorter {
         no strict 'refs';
 
         my $caller = caller();
-        my $a = ${"$caller\::a"};
-        my $b = ${"$caller\::b"};
+        my $a = @_ ? $_[0] : ${"$caller\::a"};
+        my $b = @_ ? $_[1] : ${"$caller\::b"};
 
         my @a_parts = +($is_ci ? lc($a) : $a) =~ /$re/g;
         my @b_parts = +($is_ci ? lc($b) : $b) =~ /$re/g;

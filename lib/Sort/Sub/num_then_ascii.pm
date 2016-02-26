@@ -20,8 +20,8 @@ sub gen_sorter {
         no strict 'refs';
 
         my $caller = caller();
-        my $a = ${"$caller\::a"};
-        my $b = ${"$caller\::b"};
+        my $a = @_ ? $_[0] : ${"$caller\::a"};
+        my $b = @_ ? $_[1] : ${"$caller\::b"};
 
         my $cmp = 0;
         if ($a =~ $re_is_num) {
