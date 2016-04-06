@@ -1,5 +1,11 @@
 Revision history for Sort-Sub
 
+0.06    2016-04-06 (PERLANCAR)
+
+	- [Bugfix] naturally: Use string comparison when either argument is
+	  a non-number.
+
+
 0.05    2016-02-27 (PERLANCAR)
 
 	- All sort sub should use (a,b) argument in addition to checking
