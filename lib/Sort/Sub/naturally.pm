@@ -29,10 +29,10 @@ sub gen_sorter {
         for (@a_parts) {
             last if $i >= @b_parts;
             #say "D:$a_parts[$i] <=> $b_parts[$i]";
-            if ($a_parts[$i] =~ /\d/ || $b_parts[$i] =~ /\d/) {
-                $cmp = $a_parts[$i] <=> $b_parts[$i];
-            } else {
+            if ($a_parts[$i] =~ /\D/ || $b_parts[$i] =~ /\D/) {
                 $cmp = $a_parts[$i] cmp $b_parts[$i];
+            } else {
+                $cmp = $a_parts[$i] <=> $b_parts[$i];
             }
             last if $cmp;
             $i++;
