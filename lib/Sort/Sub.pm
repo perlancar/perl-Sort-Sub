@@ -61,7 +61,7 @@ Request a case-insensitive sort:
 
 Request a case-insensitive, reverse sort:
 
- use Sort::Sub qw($naturally<ir>;
+ use Sort::Sub qw($naturally<ir>);
 
  my @sorted = sort $naturally ('track2.mp3', 'Track1.mp3', 'Track10.mp3');
  => ('Track10.mp3', 'track2.mp3', 'Track1.mp3')
