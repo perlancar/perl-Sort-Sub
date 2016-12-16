@@ -17,17 +17,29 @@ sub sort_sub_ok {
     subtest "sort_sub_ok $subname" => sub {
         my $res;
 
-        Sort::Sub->import("$subname");
-        $res = [sort {&{$subname}} @{ $args{input} }];
-        is_deeply($res, $args{output}, 'result') or diag explain $res;
+        if ($args{output}) {
+            Sort::Sub->import("$subname");
+            $res = [sort {&{$subname}} @{ $args{input} }];
+            is_deeply($res, $args{output}, 'result') or diag explain $res;
+        }
 
-        Sort::Sub->import("$subname<i>");
-        $res = [sort {&{$subname}} @{ $args{input} }];
-        is_deeply($res, $args{output_i}, 'result i') or diag explain $res;
+        if ($args{output_i}) {
+            Sort::Sub->import("$subname<i>");
+            $res = [sort {&{$subname}} @{ $args{input} }];
+            is_deeply($res, $args{output_i}, 'result i') or diag explain $res;
+        }
 
-        Sort::Sub->import("$subname<ir>");
-        $res = [sort {&{$subname}} @{ $args{input} }];
-        is_deeply($res, $args{output_ir}, 'result ir') or diag explain $res;
+        if ($args{output_r}) {
+            Sort::Sub->import("$subname<r>");
+            $res = [sort {&{$subname}} @{ $args{input} }];
+            is_deeply($res, $args{output_r}, 'result r') or diag explain $res;
+        };
+
+        if ($args{output_ir}) {
+            Sort::Sub->import("$subname<ir>");
+            $res = [sort {&{$subname}} @{ $args{input} }];
+            is_deeply($res, $args{output_ir}, 'result ir') or diag explain $res;
+        };
     };
 }
 
