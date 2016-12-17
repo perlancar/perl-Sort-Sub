@@ -46,5 +46,3 @@ sub gen_sorter {
 # ABSTRACT: Sort non-numbers (sorted asciibetically) before numbers (sorted numerically)
 
 =for Pod::Coverage ^(gen_sorter)$
-
-=head1 SEE ALSO

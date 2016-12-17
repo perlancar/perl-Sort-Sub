@@ -46,6 +46,6 @@ sub gen_sorter {
 
 =for Pod::Coverage ^(gen_sorter)$
 
-=head1 SEE ALSO
+=head1 append:SEE ALSO
 
 L<Sort::Naturally>
