@@ -1,5 +1,13 @@
 Revision history for Sort-Sub
 
+0.08    2016-12-17 (PERLANCAR)
+
+	- No functional changes.
+
+	- [dist] Use Pod::Weaver plugin Sort::Sub to generate Synopsis etc
+	  section.
+
+
 0.07    2016-12-16 (PERLANCAR)
 
 	- sort_sub_ok(): Make testing of normal/i/r/ir optional depending
