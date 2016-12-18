@@ -1,5 +1,11 @@
 Revision history for Sort-Sub
 
+0.10    2016-12-18 (PERLANCAR)
+
+	- [Incompatible change] Rename modules to by_* to be consistent
+	  with the convention.
+
+
 0.09    2016-12-18 (PERLANCAR)
 
 	- Merge dist Sort-Sub-num_in_text (there's no reason why it should
