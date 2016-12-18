@@ -1,4 +1,4 @@
-package Sort::Sub::last_num_in_text;
+package Sort::Sub::by_last_num_in_text;
 
 # DATE
 # VERSION
@@ -72,4 +72,6 @@ This is nifty for something like (L<sortsub> is CLI front-end for L<Sort::Sub>):
  christophe willem - parait-il (2014)/
 
 
-=head1 ENVIRONMENT
+=head1 append:SEE ALSO
+
+L<Sort::Sub::by_first_num_in_text>

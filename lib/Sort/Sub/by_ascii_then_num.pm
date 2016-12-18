@@ -1,4 +1,4 @@
-package Sort::Sub::num_then_ascii;
+package Sort::Sub::by_ascii_then_num;
 
 # DATE
 # VERSION
@@ -28,11 +28,11 @@ sub gen_sorter {
             if ($b =~ $re_is_num) {
                 $cmp = $a <=> $b;
             } else {
-                $cmp = -1;
+                $cmp = 1;
             }
         } else {
             if ($b =~ $re_is_num) {
-                $cmp = 1;
+                $cmp = -1;
             } else {
                 $cmp = $is_ci ?
                     lc($a) cmp lc($b) : $a cmp $b;
@@ -43,6 +43,6 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort numbers (sorted numerically) before non-numbers (sorted asciibetically)
+# ABSTRACT: Sort non-numbers (sorted asciibetically) before numbers (sorted numerically)
 
 =for Pod::Coverage ^(gen_sorter)$

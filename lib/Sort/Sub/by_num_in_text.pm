@@ -1,4 +1,4 @@
-package Sort::Sub::num_in_text;
+package Sort::Sub::by_num_in_text;
 
 # DATE
 # VERSION
@@ -57,4 +57,6 @@ in text or (f no number is found in text) ascibetically. Items that have a
 number will sort before items that do not.
 
 
-=head1 ENVIRONMENT
+=head1 append:SEE ALSO
+
+L<Sort::Sub::by_last_num_in_text>
