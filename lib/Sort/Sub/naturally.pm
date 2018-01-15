@@ -8,9 +8,9 @@ use strict;
 use warnings;
 
 sub gen_sorter {
-    my ($is_reverse, $is_ci) = @_;
+    require Sort::Naturally;
 
-    my $re = qr/([+-]?\d+|\D+)/;
+    my ($is_reverse, $is_ci) = @_;
 
     sub {
         no strict 'refs';
@@ -19,25 +19,11 @@ sub gen_sorter {
         my $a = @_ ? $_[0] : ${"$caller\::a"};
         my $b = @_ ? $_[1] : ${"$caller\::b"};
 
-        my @a_parts = +($is_ci ? lc($a) : $a) =~ /$re/g;
-        my @b_parts = +($is_ci ? lc($b) : $b) =~ /$re/g;
-
-        #use DD; dd \@a_parts;
-
-        my $i = 0;
-        my $cmp = 0;
-        for (@a_parts) {
-            last if $i >= @b_parts;
-            #say "D:$a_parts[$i] <=> $b_parts[$i]";
-            if ($a_parts[$i] =~ /\D/ || $b_parts[$i] =~ /\D/) {
-                $cmp = $a_parts[$i] cmp $b_parts[$i];
-            } else {
-                $cmp = $a_parts[$i] <=> $b_parts[$i];
-            }
-            last if $cmp;
-            $i++;
+        if ($is_reverse) {
+            Sort::Naturally::ncmp($b, $a);
+        } else {
+            Sort::Naturally::ncmp($a, $b);
         }
-        $is_reverse ? -1*$cmp : $cmp;
     };
 }
 
@@ -45,6 +31,12 @@ sub gen_sorter {
 # ABSTRACT: Sort naturally
 
 =for Pod::Coverage ^(gen_sorter)$
+
+=head1 NOTES
+
+Uses L<Sort::Naturally>'s C<ncmp> as the backend. Always sorts
+case-insensitively.
+
 
 =head1 append:SEE ALSO
 
