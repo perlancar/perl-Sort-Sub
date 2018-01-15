@@ -1,5 +1,10 @@
 package Test::Sort::Sub;
 
+## no critic: Modules::ProhibitAutomaticExportation
+
+# DATE
+# VERSION
+
 use 5.010;
 use strict 'subs', 'vars';
 use warnings;
