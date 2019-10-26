@@ -1,3 +1,10 @@
+0.111   2019-10-26  Released-By: PERLANCAR; Urgency: medium
+
+	- Allow passing arguments to gen_sorter().
+
+        - Add sorter: by_count.
+
+
 0.110   2018-01-15  Released-By: PERLANCAR
 
 	- naturally: Use Sort::Naturally instead of using our own algorithm
