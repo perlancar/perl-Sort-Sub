@@ -9,20 +9,34 @@ use 5.010001;
 use strict 'subs', 'vars';
 use warnings;
 
+our $re_spec = qr/\A(\$)?(\w+)(?:<(\w*)>)?\z/;
+
 our %argsopt_sortsub = (
     sort_sub => {
         summary => 'Name of a Sort::Sub::* module (without the prefix)',
-        schema => 'perl::modname*',
-        completion => sub {
-            require Complete::Module;
-            Complete::Module::complete_module(@_, ns_prefix=>'Sort::Sub');
-        },
+        schema => ['str*', match => qr/\A\$?\w+(?:<[ri]*>)?\z/],
+        # XXX add completion using Complete::Tree
     },
     sort_args => {
         summary => 'Arguments to pass to the Sort::Sub::* routine',
         schema => ['hash*', of=>'str*'],
     },
 );
+
+sub get_sorter {
+    my ($spec, $args) = @_;
+
+    my ($is_var, $name, $opts) = $spec =~ $re_spec
+        or die "Invalid sorter spec '$spec', please use: ".
+        '[$]NAME [ <OPTS> ]';
+    require "Sort/Sub/$name.pm";
+    $opts //= "";
+    my $is_reverse = $opts =~ /r/;
+    my $is_ci      = $opts =~ /i/;
+    my $gen_sorter = \&{"Sort::Sub::$name\::gen_sorter"};
+    my $sorter = $gen_sorter->($is_reverse, $is_ci, $args // {});
+    $sorter;
+}
 
 sub import {
     my $class = shift;
@@ -33,20 +47,13 @@ sub import {
         $i++;
         last if $i >= @_;
         my $import = $_[$i];
-        my ($is_var, $name, $opts) = $import =~ /\A(\$)?(\w+)(?:<(\w*)>)?\z/
-            or die "Invalid import request '$import', please use: ".
-            '[$]NAME [ <OPTS> ]';
-        require "Sort/Sub/$name.pm";
-        $opts //= "";
-        my $is_reverse = $opts =~ /r/;
-        my $is_ci      = $opts =~ /i/;
-        my $args       = {};
+        my $args = {};
         if (ref $_[$i+1] eq 'HASH') {
             $args = $_[$i+1];
             $i++;
         }
-        my $gen_sorter = \&{"Sort::Sub::$name\::gen_sorter"};
-        my $sorter = $gen_sorter->($is_reverse, $is_ci, $args);
+        my $sorter = get_sorter($import, $args);
+        my ($is_var, $name) = $import =~ $re_spec; # XXX double matching
         if ($is_var) {
             ${"$caller\::$name"} = \&$sorter;
         } else {
@@ -99,6 +106,14 @@ Pass arguments to sort generator routine:
  my @sorted = sort $by_num_of_colons ('a::','b:','c::::','d:::');
  => ('b:','a::','d:::','c::::')
 
+Request a coderef directly, without using the import interface:
+
+ use Sort::Sub;
+
+ my $naturally = Sort::Sub::get_sorter('naturally');
+ my $naturally = Sort::Sub::get_sorter('$naturally');
+ my $rev_naturally = Sort::Sub::get_sorter('naturally<r>');
+
 
 =head1 DESCRIPTION
 
@@ -142,3 +157,19 @@ Where C<$is_reserve> will be set to true if user requests a reverse sort,
 C<$is_ci> will be set to true if user requests a case-insensitive sort. C<$args>
 is hashref to pass additional arguments to the C<gen_sorter()> routine. The
 subroutine should return a code reference.
+
+
+=head1 FUNCTIONS
+
+=head2 get_sorter
+
+Usage:
+
+ my $coderef = Sort::Sub::get_sorter('SPEC');
+
+Example:
+
+ my $rev_naturally = Sort::Sub::get_sorter('naturally<r>');
+
+This is an alternative to using the import interface. This function is not
+imported.
