@@ -1,3 +1,13 @@
+0.112   2019-12-14  Released-By: PERLANCAR; Urgency: medium
+
+	- Add functional interface: get_sorter().
+
+        - Add sorters: by_length, asciibetically, numerically.
+
+	- Provide some Rinci metadata for 'sort_sub' and 'sort_args'
+	  function arguments.
+
+
 0.111   2019-10-26  Released-By: PERLANCAR; Urgency: medium
 
 	- Allow passing arguments to gen_sorter().
