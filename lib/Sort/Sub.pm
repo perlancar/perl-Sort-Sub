@@ -1,11 +1,28 @@
 package Sort::Sub;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
 use strict 'subs', 'vars';
 use warnings;
+
+our %argsopt_sortsub = (
+    sort_sub => {
+        summary => 'Name of a Sort::Sub::* module (without the prefix)',
+        schema => 'perl::modname*',
+        completion => sub {
+            require Complete::Module;
+            Complete::Module::complete_module(@_, ns_prefix=>'Sort::Sub');
+        },
+    },
+    sort_args => {
+        summary => 'Arguments to pass to the Sort::Sub::* routine',
+        schema => ['hash*', of=>'str*'],
+    },
+);
 
 sub import {
     my $class = shift;
