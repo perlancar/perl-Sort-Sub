@@ -1,3 +1,8 @@
+0.113   2019-12-15  Released-By: PERLANCAR; Urgency: medium
+
+	- Use sortsub::spec Sah schema.
+
+
 0.112   2019-12-14  Released-By: PERLANCAR; Urgency: medium
 
 	- Add functional interface: get_sorter().
