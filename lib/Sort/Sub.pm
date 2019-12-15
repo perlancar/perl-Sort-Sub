@@ -176,3 +176,11 @@ Example:
 
 This is an alternative to using the import interface. This function is not
 imported.
+
+
+=head1 SEE ALSO
+
+Other additional C<Sort::Sub::*> not bundled in this distribution.
+
+Supporting CLI's: L<sortsub> (from L<App::sortsub>), CLI's from
+L<App::SortSubUtils>.
