@@ -1,3 +1,8 @@
+0.114   2019-12-15  Released-By: PERLANCAR; Urgency: medium
+
+	- Add meta().
+
+
 0.113   2019-12-15  Released-By: PERLANCAR; Urgency: medium
 
 	- Use sortsub::spec Sah schema.

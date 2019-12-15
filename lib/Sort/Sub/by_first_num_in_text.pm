@@ -15,7 +15,7 @@ require Sort::Sub::by_num_in_text;
 1;
 # ABSTRACT: Alias for Sort::Sub::by_num_in_text
 
-=for Pod::Coverage ^(gen_sorter)$
+=for Pod::Coverage ^(gen_sorter|meta)$
 
 =head1 append:SEE ALSO
 

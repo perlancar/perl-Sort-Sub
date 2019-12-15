@@ -58,7 +58,7 @@ sub gen_sorter {
 1;
 # ABSTRACT:
 
-=for Pod::Coverage ^(gen_sorter)$
+=for Pod::Coverage ^(gen_sorter|meta)$
 
 =head1 DESCRIPTION
 
