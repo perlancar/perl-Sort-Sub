@@ -18,8 +18,8 @@ sub meta {
                 summary => 'Either compiled code or string code excluding the "sub {" and "}" enclosure',
                 description => <<'_',
 
-Code should accept two arguments (the operand) and expected to return -1, 0, -1
-like the builtin `cmp` operator.
+Code should accept two arguments (the operands to be compared) and is expected
+to return -1, 0, -1 like the builtin `cmp` operator.
 
 _
                 schema => 'str*',
