@@ -1,3 +1,10 @@
+0.116   2019-12-15  Released-By: PERLANCAR; Urgency: low
+
+	- No functional changes.
+
+	- [doc] Mention sorted.
+
+
 0.115   2019-12-15  Released-By: PERLANCAR; Urgency: medium
 
 	- Add sorters: by_perl_function, by_perl_op, by_perl_code, by_rand
