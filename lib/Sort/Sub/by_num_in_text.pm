@@ -1,12 +1,20 @@
 package Sort::Sub::by_num_in_text;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
 use strict;
 use warnings;
 
+sub meta {
+    return {
+        v => 1,
+        summary => 'Sort by first number found in text or (if no number is found) ascibetically',
+    };
+}
 sub gen_sorter {
     my ($is_reverse, $is_ci) = @_;
 
@@ -46,7 +54,7 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort by first number found in text or (if no number is found) ascibetically
+# ABSTRACT:
 
 =for Pod::Coverage ^(gen_sorter)$
 

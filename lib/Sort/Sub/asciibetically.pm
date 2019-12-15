@@ -9,6 +9,13 @@ use 5.010;
 use strict;
 use warnings;
 
+sub meta {
+    return {
+        v => 1,
+        summary => 'Sort ascibetically (string-wise)',
+    };
+}
+
 sub gen_sorter {
     my ($is_reverse, $is_ci) = @_;
 
@@ -25,7 +32,7 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort asciibetically (string-wise)
+# ABSTRACT:
 
 =for Pod::Coverage ^(gen_sorter)$
 
@@ -34,5 +41,3 @@ sub gen_sorter {
 This is equivalent to Perl's:
 
  sub { $a cmp $b }
-
-    

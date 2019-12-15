@@ -157,6 +157,10 @@ C<$is_ci> will be set to true if user requests a case-insensitive sort. C<$args>
 is hashref to pass additional arguments to the C<gen_sorter()> routine. The
 subroutine should return a code reference.
 
+The module should also contain a C<meta> subroutine which returns a metadata
+L<DefHash>. Known properties (keys) include: C<v> (currently at 1), C<summary>.
+Other metadata properties will be added in the future.
+
 
 =head1 FUNCTIONS
 

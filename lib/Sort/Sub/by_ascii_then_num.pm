@@ -1,11 +1,20 @@
 package Sort::Sub::by_ascii_then_num;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010;
 use strict;
 use warnings;
+
+sub meta {
+    return {
+        v => 1,
+        summary => 'Sort non-numbers (sorted asciibetically) before numbers (sorted numerically)',
+    };
+}
 
 sub gen_sorter {
     my ($is_reverse, $is_ci) = @_;
@@ -43,6 +52,6 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort non-numbers (sorted asciibetically) before numbers (sorted numerically)
+# ABSTRACT:
 
 =for Pod::Coverage ^(gen_sorter)$

@@ -1,5 +1,6 @@
 package Sort::Sub::by_count;
 
+# AUTHORITY
 # DATE
 # DIST
 # VERSION
@@ -7,6 +8,13 @@ package Sort::Sub::by_count;
 use 5.010001;
 use strict;
 use warnings;
+
+sub meta {
+    return {
+        v => 1,
+        summary => 'Sort by number of occurrences of pattern in string',
+    };
+}
 
 sub _pattern_to_re {
     my $args = shift;
@@ -48,7 +56,7 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort by number of occurrences of pattern in string
+# ABSTRACT:
 
 =for Pod::Coverage ^(gen_sorter)$
 

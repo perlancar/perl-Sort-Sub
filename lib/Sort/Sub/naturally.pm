@@ -1,11 +1,20 @@
 package Sort::Sub::naturally;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010;
 use strict;
 use warnings;
+
+sub meta {
+    return {
+        v => 1,
+        summary => 'Sort naturally (by number or string parts)',
+    };
+}
 
 sub gen_sorter {
     require Sort::Naturally;
@@ -28,7 +37,7 @@ sub gen_sorter {
 }
 
 1;
-# ABSTRACT: Sort naturally
+# ABSTRACT:
 
 =for Pod::Coverage ^(gen_sorter)$
 
