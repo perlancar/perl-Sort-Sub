@@ -182,5 +182,5 @@ imported.
 
 Other additional C<Sort::Sub::*> not bundled in this distribution.
 
-Supporting CLI's: L<sortsub> (from L<App::sortsub>), CLI's from
-L<App::SortSubUtils>.
+Supporting CLI's: L<sortsub> (from L<App::sortsub>), L<sorted> (from
+L<App::sorted>), CLI's from L<App::SortSubUtils>.
