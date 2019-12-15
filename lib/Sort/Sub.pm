@@ -14,8 +14,7 @@ our $re_spec = qr/\A(\$)?(\w+)(?:<(\w*)>)?\z/;
 our %argsopt_sortsub = (
     sort_sub => {
         summary => 'Name of a Sort::Sub::* module (without the prefix)',
-        schema => ['str*', match => qr/\A\$?\w+(?:<[ri]*>)?\z/],
-        # XXX add completion using Complete::Tree
+        schema => ['sortsub::spec*'],
     },
     sort_args => {
         summary => 'Arguments to pass to the Sort::Sub::* routine',
