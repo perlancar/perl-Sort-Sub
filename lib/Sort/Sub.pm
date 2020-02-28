@@ -23,7 +23,7 @@ our %argsopt_sortsub = (
 );
 
 sub get_sorter {
-    my ($spec, $args) = @_;
+    my ($spec, $args, $with_meta) = @_;
 
     my ($is_var, $name, $opts) = $spec =~ $re_spec
         or die "Invalid sorter spec '$spec', please use: ".
@@ -34,7 +34,14 @@ sub get_sorter {
     my $is_ci      = $opts =~ /i/;
     my $gen_sorter = \&{"Sort::Sub::$name\::gen_sorter"};
     my $sorter = $gen_sorter->($is_reverse, $is_ci, $args // {});
-    $sorter;
+    if ($with_meta) {
+        my $meta = {};
+        eval { $meta = &{"Sort::Sub::$name\::meta"}() };
+        warn if $@;
+        return ($sorter, $meta);
+    } else {
+        return $sorter;
+    }
 }
 
 sub import {
@@ -168,7 +175,7 @@ Other metadata properties will be added in the future.
 
 Usage:
 
- my $coderef = Sort::Sub::get_sorter('SPEC');
+ my $coderef = Sort::Sub::get_sorter('SPEC' [ , \%args [ , $with_meta ] ]);
 
 Example:
 
@@ -176,6 +183,12 @@ Example:
 
 This is an alternative to using the import interface. This function is not
 imported.
+
+If C<$with_meta> is set to true, will return this:
+
+ ($sorter, $meta)
+
+instead of just the C<$sorter> subroutine.
 
 
 =head1 SEE ALSO
