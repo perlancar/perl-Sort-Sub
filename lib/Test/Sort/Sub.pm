@@ -1,8 +1,10 @@
-package Test::Sort::Sub;
-
 ## no critic: Modules::ProhibitAutomaticExportation
 
+package Test::Sort::Sub;
+
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -15,6 +17,21 @@ use Test::More 0.98;
 
 our @EXPORT = qw(sort_sub_ok);
 
+sub _sort {
+    my ($args, $extras, $output_name) = @_;
+
+    my $subname = $args->{subname};
+    Sort::Sub->import("$subname$extras", ($args->{args} ? $args->{args} : ()));
+    my $res;
+    if ($args->{compares_record}) {
+        $res = [map {$_->[0]} sort {&{$subname}($a,$b)}
+                    (map { [$args->{input}[$_], $_] } 0..$#{ $args->{input} })];
+    } else {
+        $res = [sort {&{$subname}($a,$b)} @{ $args->{input} }];
+    }
+    is_deeply($args->{$output_name}, $res) or diag explain $res;
+}
+
 sub sort_sub_ok {
     my %args = @_;
 
@@ -23,27 +40,19 @@ sub sort_sub_ok {
         my $res;
 
         if ($args{output}) {
-            Sort::Sub->import("$subname", ($args{args} ? $args{args} : ()));
-            $res = [sort {&{$subname}} @{ $args{input} }];
-            is_deeply($res, $args{output}, 'result') or diag explain $res;
+            _sort(\%args, '', 'output');
         }
 
         if ($args{output_i}) {
-            Sort::Sub->import("$subname<i>", ($args{args} ? $args{args} : ()));
-            $res = [sort {&{$subname}} @{ $args{input} }];
-            is_deeply($res, $args{output_i}, 'result i') or diag explain $res;
+            _sort(\%args, '<i>', 'output_i');
         }
 
         if ($args{output_r}) {
-            Sort::Sub->import("$subname<r>", ($args{args} ? $args{args} : ()));
-            $res = [sort {&{$subname}} @{ $args{input} }];
-            is_deeply($res, $args{output_r}, 'result r') or diag explain $res;
+            _sort(\%args, '<r>', 'output_r');
         };
 
         if ($args{output_ir}) {
-            Sort::Sub->import("$subname<ir>", ($args{args} ? $args{args} : ()));
-            $res = [sort {&{$subname}} @{ $args{input} }];
-            is_deeply($res, $args{output_ir}, 'result ir') or diag explain $res;
+            _sort(\%args, '<ir>', 'output_ir');
         };
     };
 }

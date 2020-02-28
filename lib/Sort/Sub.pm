@@ -165,8 +165,12 @@ is hashref to pass additional arguments to the C<gen_sorter()> routine. The
 subroutine should return a code reference.
 
 The module should also contain a C<meta> subroutine which returns a metadata
-L<DefHash>. Known properties (keys) include: C<v> (currently at 1), C<summary>.
-Other metadata properties will be added in the future.
+L<DefHash>. Known properties (keys) include: C<v> (currently at 1), C<summary>,
+C<compares_record> (bool, if set to true then sorter will be fed records C<<
+[$data, $order] >> instead of just C<$data>; C<$order> is a number that can be
+line number of array index; this allows sorter to sort by additional information
+instead of just the data items). Other metadata properties will be added in the
+future.
 
 
 =head1 FUNCTIONS
