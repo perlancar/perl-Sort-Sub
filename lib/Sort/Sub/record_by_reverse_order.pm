@@ -17,8 +17,6 @@ sub meta {
 }
 
 sub gen_sorter {
-    require Sort::BySpec;
-
     my ($is_reverse, $is_ci) = @_;
 
     sub {
@@ -54,6 +52,6 @@ It then performs:
  $b->[1] <=> $a->[1]
 
 
-=head1 SEE ALSO
+=head1 prepend:SEE ALSO
 
 L<Sort::Sub::record_by_order>
