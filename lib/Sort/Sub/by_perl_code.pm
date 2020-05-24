@@ -8,6 +8,7 @@ package Sort::Sub::by_perl_code;
 use 5.010;
 use strict;
 use warnings;
+use Log::ger;
 
 sub meta {
     return {
@@ -36,7 +37,9 @@ sub gen_sorter {
         unless defined $code;
 
     if (ref $code ne 'CODE') {
-        $code = eval "no strict; no warnings; sub { $code }";
+        $code = "no strict; no warnings; sub { $code }";
+        log_trace "Compiling sort code: $code";
+        $code = eval $code;
         die "Can't compile $code: $@" if $@;
     }
 
