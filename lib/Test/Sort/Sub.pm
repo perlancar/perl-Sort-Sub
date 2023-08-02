@@ -2,11 +2,6 @@
 
 package Test::Sort::Sub;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use strict 'subs', 'vars';
 use warnings;
@@ -14,6 +9,11 @@ use warnings;
 use Exporter 'import';
 use Sort::Sub ();
 use Test::More 0.98;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 our @EXPORT = qw(sort_sub_ok);
 

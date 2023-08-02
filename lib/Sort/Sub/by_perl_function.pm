@@ -1,13 +1,13 @@
 package Sort::Sub::by_perl_function;
 
+use 5.010;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010;
-use strict;
-use warnings;
 
 sub meta {
     return {

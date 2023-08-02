@@ -1,6 +1,6 @@
-package Sort::Sub::record_by_order;
+package Sort::Sub::numerically_no_warning;
 
-use 5.010001;
+use 5.010;
 use strict;
 use warnings;
 
@@ -12,7 +12,7 @@ use warnings;
 sub meta {
     return {
         v => 1,
-        compares_record => 1,
+        summary => 'Sort numerically (without warning when comparing non-numbers)',
     };
 }
 
@@ -21,12 +21,13 @@ sub gen_sorter {
 
     sub {
         no strict 'refs';
+        no warnings 'numeric';
 
         my $caller = caller();
         my $a = @_ ? $_[0] : ${"$caller\::a"};
         my $b = @_ ? $_[1] : ${"$caller\::b"};
 
-        my $cmp = $a->[1] <=> $b->[1];
+        my $cmp = $a <=> $b;
         $is_reverse ? -1*$cmp : $cmp;
     };
 }
@@ -38,20 +39,11 @@ sub gen_sorter {
 
 =head1 DESCRIPTION
 
-Sort by the order of records. This sorter expects C<$a> and C<$b> to be records
-of:
+This is equivalent to:
 
- [$data, $order]
-
-instead of just:
-
- $data
-
-It then performs:
-
- $a->[1] <=> $b->[1]
+ sub { no warnings 'numeric'; $a <=> $b }
 
 
 =head1 prepend:SEE ALSO
 
-L<Sort::Sub::record_by_reverse_order>
+L<Sort::Sub::numerically>

@@ -1,13 +1,13 @@
 package Sort::Sub::numerically;
 
+use 5.010;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010;
-use strict;
-use warnings;
 
 sub meta {
     return {
@@ -41,3 +41,8 @@ sub gen_sorter {
 This is equivalent to:
 
  sub { $a <=> $b }
+
+
+=head1 prepend:SEE ALSO
+
+L<Sort::Sub::numerically_no_warning>

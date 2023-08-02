@@ -1,13 +1,13 @@
 package Sort::Sub::by_rand;
 
+use 5.010;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010;
-use strict;
-use warnings;
 
 sub meta {
     return {

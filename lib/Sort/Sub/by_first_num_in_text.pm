@@ -1,16 +1,16 @@
 package Sort::Sub::by_first_num_in_text;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 require Sort::Sub::by_num_in_text;
 *gen_sorter = \&Sort::Sub::by_num_in_text::gen_sorter;
 *meta       = \&Sort::Sub::by_num_in_text::meta;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 1;
 # ABSTRACT: Alias for Sort::Sub::by_num_in_text

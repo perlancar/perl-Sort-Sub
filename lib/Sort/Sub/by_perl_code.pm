@@ -1,14 +1,14 @@
 package Sort::Sub::by_perl_code;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010;
 use strict;
 use warnings;
 use Log::ger;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 sub meta {
     return {

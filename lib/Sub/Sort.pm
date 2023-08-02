@@ -1,3 +1,4 @@
+## no critic: TestingAndDebugging::RequireUseStrict
 package Sub::Sort;
 
 #use 5.010001;

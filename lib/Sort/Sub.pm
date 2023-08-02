@@ -1,14 +1,14 @@
 package Sort::Sub;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use strict 'subs', 'vars';
 use warnings;
 use Log::ger;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 our $re_spec = qr/\A(\$)?(\w+)(?:<(\w*)>)?\z/;
 

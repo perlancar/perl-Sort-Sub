@@ -1,13 +1,13 @@
 package Sort::Sub::by_last_num_in_text;
 
+use 5.010001;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010001;
-use strict;
-use warnings;
 
 sub meta {
     return {

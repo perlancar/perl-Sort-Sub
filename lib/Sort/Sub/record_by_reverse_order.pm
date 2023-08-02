@@ -1,13 +1,13 @@
 package Sort::Sub::record_by_reverse_order;
 
+use 5.010001;
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use 5.010001;
-use strict;
-use warnings;
 
 sub meta {
     return {
